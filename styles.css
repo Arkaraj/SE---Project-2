@@ -1,0 +1,66 @@
+body{
+    background-color: #031321;
+}
+.container-fluid{
+  padding: 7% 15%;
+}
+
+/* Navigation Bar */
+.navbar{
+  margin-bottom: 100px;
+}
+.navbar-brand{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+}
+.nav-item{
+  margin: 5%;
+}
+.nav-link:hover{
+  color: black !important;
+  background-color: white;
+  transition: 1s;
+}
+.nav-item:active{
+  background: white;
+}
+
+
+/* Quote */
+.h1-quote{
+  color: white;
+  text-align: justify;
+  padding-top: 300px;
+  padding-left: 100px;
+}
+.p-quote{
+  color: grey;
+  text-align: right;
+}
+
+
+/* slideshow */
+.slideshow{
+  margin-top: 100px;
+}
+.h1-slideshow{
+  text-align: center;
+  color: white;
+  padding-bottom: 100px;
+}
+.slideshow-imgs{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.p-slideshow{
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding-top: 10px;
+}
+.carousel-indicators{
+  margin: 0;
+  padding: 0;
+}
