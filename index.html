@@ -1,123 +1,192 @@
 <!DOCTYPE html>
-
 <head>
-  <meta charset="utf-8">
-  <title>SportsHub</title>
-  <!-- Boostrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    <meta charset="utf-8">
+    <title>SportsHub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon7.ico">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lobster&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Zilla+Slab+Highlight:wght@400;700&display=swap"
+        rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-
-  <!-- Google Fonts -->
-  <link <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/2b0956e649.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-  <section id="title">
-    <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="">SportsHub</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CONTACT</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                LOGIN
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">CUSTOMER</a>
-                <a class="dropdown-item" href="#">GROUND STAFF</a>
-              </div>
-            </li>
-          </ul>
+    <section id="title">
+        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="">SportsHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#title">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        LOGIN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#login">CUSTOMER</a>
+                            <a class="dropdown-item" href="#login">GROUND STAFF</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="img-quote" src="images/tebow.jpg" width="480" height="640">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="h1-quote">HARD WORK BEATS TALENT IF TALENT DOESN'T WORK HARD</h1>
+                <p class="p-quote">-Tim Notke</p>
+            </div>
         </div>
-      </nav>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <img src="images/tebow.jpg" width="600" height="800">
+    </section>
+    <section id="slideshow">
+        <div class="slideshow">
+            <h1 class="h1-slideshow">Sports Offered at SportsHub</h1>
+            <div id="slideshow-carousel" class="carousel slide" data-ride="carousel" data-interval=2500>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="slideshow-imgs" src="images/Football.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Football</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="slideshow-imgs" src="images/Cricket.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Cricket</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="slideshow-imgs" src="images/Badminton.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Badminton</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="slideshow-imgs" src="images/Hockey.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Hockey</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="slideshow-imgs" src="images/Squash.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Squash</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="slideshow-imgs" src="images/Tennis.jpg" alt="" height="500" width="300">
+                        <p class="p-slideshow">Tennis</p>
+                    </div>
+                </div>
+                <a class="carousel-control-prev buttonsoof slideshow-btns" href="#slideshow-carousel" role="button"
+                    data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next buttonsoof slideshow-btns" href="#slideshow-carousel" role="button"
+                    data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-6">
-          <h1 class="h1-quote">HARD WORK BEATS TALENT IF TALENT DOESN'T WORK HARD</h1>
-          <p class="p-quote">-Tim Notke</p>
+    </section>
+    <section id="login">
+        <div class="row">
+            <div class="login-card col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="h3-login">Customer</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="p-login">If you're new around here, press this</p>
+                                <a href="" class="login-btn">
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  Sign-Up
+                                  </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="p-login">You've been here before? Great!</p>
+                                <a href="" class="login-btn">
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  Login
+                                  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-card col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="h3-login">Ground Staff</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="p-login">So you wish to manage the place eh? Sign Up below</p>
+                                <a href="" class="login-btn">
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  Sign-Up
+                                  </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="p-login">Welcome Back Boss!</p>
+                                <a href="" class="login-btn">
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                                  Login
+                                  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <section id="contact">
+      <div class="contact-div">
+        <a href="https://twitter.com/saumitra_11_" class="cunt2" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/saumitra_11_/?hl=en" class="cunt2" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/saumitra.pathak.11" class="cunt2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="cunt2" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://github.com/ProBot11" class="cunt2"><i class="fab fa-github" target="_blank"></i></a>
+        <a href="mailto:saumitra.pathak2019@vitstudent.ac.in?subject=Support for SportsHub" class="cunt2" target="_blank"><i class="fas fa-envelope"></i></a>
       </div>
-
-      <div class="slideshow">
-        <h1 class="h1-slideshow">Sports Offered at SportsHub</h1>
-        <div id="slideshow-carousel" class="carousel slide" data-ride="carousel" data-interval=2500000>
-          <ol class="carousel-indicators">
-            <li data-target="#slideshow-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#slideshow-carousel" data-slide-to="1"></li>
-            <li data-target="#slideshow-carousel" data-slide-to="2"></li>
-            <li data-target="#slideshow-carousel" data-slide-to="3"></li>
-            <li data-target="#slideshow-carousel" data-slide-to="4"></li>
-            <li data-target="#slideshow-carousel" data-slide-to="5"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="slideshow-imgs" src="images/Football.jpg" alt=""  height="500" width="300">
-              <p class="p-slideshow">Football</p>
-            </div>
-            <div class="carousel-item">
-              <img class="slideshow-imgs" src="images/Cricket.jpg" alt="" height="500" width="300">
-              <p class="p-slideshow">Cricket</p>
-            </div>
-            <div class="carousel-item">
-              <img class="slideshow-imgs" src="images/Badminton.jpg" alt="" height="500" width="300">
-              <p class="p-slideshow">Badminton</p>
-            </div>
-            <div class="carousel-item">
-              <img class="slideshow-imgs" src="images/Hockey.jpg" alt="" height="500" width="300">
-              <p class="p-slideshow">Hockey</p>
-            </div>
-            <div class="carousel-item">
-              <img class="slideshow-imgs" src="images/Squash.jpg" alt="" height="500" width="300">
-              <p class="p-slideshow">Squash</p>
-            </div>
-            <div class="carousel-item">
-              <img class="slideshow-imgs" src="images/Tennis.jpg" alt="" height="500" width="300">
-              <p class="p-slideshow">Tennis</p>
-            </div>
-          </div>
-          <a class="carousel-control-prev buttonsoof" href="#slideshow-carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next buttonsoof" href="#slideshow-carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-  </section>
-  <section id="conclusion">
-
-  </section>
+      <p class="p-contact" title="19BCE2411,19BCI0192,19BCE0930">Saumitra Pathak <br> Maurya Goyal <br>Shivam Bansal</p>
+    </section>
 </body>
-
 </html>
