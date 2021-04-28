@@ -7,6 +7,8 @@ const JWT = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const user = require("./user");
 const staff = require("./staff");
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI(process.env.NEWS_API);
 
 const signToken = (id) => {
   return JWT.sign(
@@ -15,12 +17,12 @@ const signToken = (id) => {
       sub: id,
     },
     `${process.env.SECRET}`,
-    { expressIn: "30d" }
+    { expiresIn: "30d" }
   );
 };
 
 router.get("/login", async (req, res) => {
-  res.render("login");
+  res.render("login", { msg: { msg: null } });
 });
 router.get("/stafflogin", async (req, res) => {
   res.render("gflogin");
@@ -31,7 +33,6 @@ router.get("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
   try {
     connection.query(
       `SELECT * from User where email = '${email}' `,
@@ -51,7 +52,15 @@ router.post("/login", async (req, res) => {
             });
             console.log("User Authenticated!!");
             // Pass to the frontend
-            res.status(200).redirect("/user");
+            const news = await newsapi.v2.topHeadlines({
+              category: "sports",
+              language: "en",
+              country: "in",
+            });
+            res.render("userdashboard", {
+              result: results[0],
+              news: news.articles.slice(0, 8),
+            });
             //res.json({ auth: true, token: token, result: results });
           } else {
             // Needs to be better
@@ -65,17 +74,17 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   const { firstName, lastName, phone, email, password } = req.body;
-
-  const hash = bcrypt.hash(password, 10);
-
+  const hash = await bcrypt.hash(password, 10);
   connection.query(
-    `INSERT INTO User(firstName,lastName,email,phone,password) values('${firstName}','${lastName}',${email},'${phone}','${hash}')`,
+    `INSERT INTO User(firstName,lastName,email,phone,password) values('${firstName}','${lastName}','${email}','${phone}','${hash}')`,
     (err, results, fields) => {
       if (err) {
         console.log("Error: " + err);
-        res.send("nope");
+        res.redirect("/");
       } else {
-        res.send("added");
+        res.render("login", {
+          msg: { msg: "Registered Successfully, now you can Login" },
+        });
       }
     }
   );
@@ -104,6 +113,15 @@ router.post("/stafflogin", async (req, res) => {
     }
   );
 });
+
+router.get(
+  "/logout",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.clearCookie("access_token");
+    res.redirect("/");
+  }
+);
 
 router.use("/user", passport.authenticate("jwt", { session: false }), user);
 router.use("/staff", passport.authenticate("jwt", { session: false }), staff);
