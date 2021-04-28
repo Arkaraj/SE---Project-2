@@ -4,11 +4,12 @@ require("dotenv").config();
 const path = require("path");
 
 const cookieParser = require("cookie-parser");
-// const jwt = require("jsonwebtoken");
+const methodOverride = require("method-override");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(methodOverride("_method"));
 
 const auth = require("./routes/auth");
 

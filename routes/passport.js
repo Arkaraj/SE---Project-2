@@ -17,17 +17,31 @@ passport.use(
       secretOrKey: `${process.env.SECRET}`,
     },
     (payload, done) => {
-      connection.query(
-        `SELECT * FROM User WHERE id = '${payload.sub}'`,
-        (err, result, fields) => {
-          if (err) {
-            return done(err, false);
+      if (payload.sub.role) {
+        connection.query(
+          `SELECT * FROM Staff WHERE Sid = '${payload.sub.id}'`,
+          (err, result, fields) => {
+            if (err) {
+              return done(err, false);
+            }
+            if (result.length > 0) {
+              return done(null, result[0]);
+            } else done(null, false);
           }
-          if (result.length > 0) {
-            return done(null, result[0]);
-          } else done(null, false);
-        }
-      );
+        );
+      } else {
+        connection.query(
+          `SELECT * FROM User WHERE id = '${payload.sub.id}'`,
+          (err, result, fields) => {
+            if (err) {
+              return done(err, false);
+            }
+            if (result.length > 0) {
+              return done(null, result[0]);
+            } else done(null, false);
+          }
+        );
+      }
     }
   )
 );

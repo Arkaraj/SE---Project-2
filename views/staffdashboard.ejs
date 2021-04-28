@@ -30,11 +30,25 @@
 						</li>
 						<li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a>
 						</li>
+						<li class="nav-item">
+							<form action="/logout" method="GET"><button type="submit">logout</button></form>
+						</li>
 					</ul>
 				</div>
 			</nav>
+			<h3 class="motherfucker">Welcome Admin, <%= result.firstName %> </h3>
+			<h2 class="motherfucker">News:</h2>
 			<div class="news">
-
+				<% news.forEach(article => { %>
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" src="<%= article.urlToImage %> " alt="Sports News image ">
+						<div class="card-body">
+						  <h5 class="card-title"><%= article.title %></h5>
+						  <p class="card-text"><%= article.description%></p>
+						  <a href="<%= article.url %> " class="btn btn-primary">Read More</a>
+						</div>
+					</div>
+				<% }) %> 
 			</div>
         </div>
 	</section>
@@ -52,7 +66,41 @@
 		</ul>
 	</section>
 	<section id="tables">
-
+		<h2>Bookings:</h2>
+		<table class="table table-striped">
+			<thead>
+			  <tr>
+				<th scope="col">#</th>
+				<th scope="col">Stadium</th>
+				<th scope="col">City</th>
+				<th scope="col">TimeSlot</th>
+				<th scope="col">Timings</th>
+				<th scope="col">Delete</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <% booking.forEach((info,indx) => { %>
+				<tr>
+					<th scope="row"><%= indx + 1 %> </th>
+					<td><%= info.stadium %></td>
+					<td><%= info.city %></td>
+					<td><%= info.Date.toDateString() %> </td>
+					<td>
+						<% if (info.Timing == 1) { %>
+						6-8 am
+				<% } else if (info.Timing == 2) { %>
+					10-12 am
+			  <% } else { %>
+				2-4 pm
+				<% } %> 
+			  </td>
+			  <td>
+				<form action="/staff/<%= info.Bid %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form> 
+			</td>
+			<% }) %>
+				  </tr>
+			</tbody>
+		  </table>
 	</section>
     <section id="contact">
 		<div class="contact-div"> <a href="https://twitter.com/saumitra_11_" class="cunt2" target="_blank"><i class="fab fa-twitter"></i></a>

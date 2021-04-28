@@ -8,13 +8,14 @@ const bcrypt = require("bcrypt");
 const user = require("./user");
 const staff = require("./staff");
 const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI(process.env.NEWS_API);
+const isStaff = require("../middleware/isStaff");
+const isUser = require("../middleware/isUser");
 
-const signToken = (id) => {
+const signToken = (id, role) => {
   return JWT.sign(
     {
       iss: "Arkaraj Ghosh",
-      sub: id,
+      sub: { id, role },
     },
     `${process.env.SECRET}`,
     { expiresIn: "30d" }
@@ -45,32 +46,14 @@ router.post("/login", async (req, res) => {
           let encrypt = results[0].password;
           const validate = await bcrypt.compare(password, encrypt);
           if (validate) {
-            const token = signToken(results[0].id);
+            const token = signToken(results[0].id, results[0].role);
             res.cookie("access_token", token, {
               httpOnly: true,
               sameSite: true,
             });
             console.log("User Authenticated!!");
             // Pass to the frontend
-            const news = await newsapi.v2.topHeadlines({
-              category: "sports",
-              language: "en",
-              country: "in",
-            });
-            connection.query(
-              `SELECT * FROM Booking,User where Booking.userId = User.id`,
-              async (err, result, fields) => {
-                if (err) throw err;
-                else {
-                  const booking = result;
-                  res.render("userdashboard", {
-                    result: results[0],
-                    news: news.articles.slice(0, 8),
-                    booking,
-                  });
-                }
-              }
-            );
+            res.status(200).redirect("/user");
             //res.json({ auth: true, token: token, result: results });
           } else {
             // Needs to be better
@@ -102,16 +85,15 @@ router.post("/register", async (req, res) => {
 
 router.post("/stafflogin", async (req, res) => {
   const { email, password } = req.body;
-
   connection.query(
-    `SELECT * from Staff where email = '${email} and password = '${password}' `,
+    `SELECT * from Staff where email = '${email}' and password = '${password}' `,
     async (error, results, fields) => {
       if (error) throw error;
       // no error
       if (results.length == 0) {
         return res.status(200).redirect("/");
       } else {
-        const token = signToken(results[0].Sid);
+        const token = signToken(results[0].Sid, results[0].role);
         res.cookie("access_token", token, {
           httpOnly: true,
           sameSite: true,
@@ -133,7 +115,17 @@ router.get(
   }
 );
 
-router.use("/user", passport.authenticate("jwt", { session: false }), user);
-router.use("/staff", passport.authenticate("jwt", { session: false }), staff);
+router.use(
+  "/user",
+  passport.authenticate("jwt", { session: false }),
+  isUser,
+  user
+);
+router.use(
+  "/staff",
+  passport.authenticate("jwt", { session: false }),
+  isStaff,
+  staff
+);
 
 module.exports = router;
