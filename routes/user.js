@@ -15,10 +15,47 @@ router.get("/", async (req, res) => {
     country: "in",
   });
 
-  res.render("userdashboard", {
-    result: req.user,
-    news: news.articles.slice(0, 8),
-  });
+  let booking = [];
+
+  connection.query(
+    `SELECT * FROM Booking,User where Booking.userId = User.id`,
+    async (err, result, fields) => {
+      if (err) throw err;
+      else {
+        booking = result;
+        res.render("userdashboard", {
+          result: req.user,
+          news: news.articles.slice(0, 8),
+          booking,
+        });
+      }
+    }
+  );
+});
+
+router.get("/booking", async (req, res) => {
+  res.render("booking");
+});
+
+router.post("/booking", async (req, res) => {
+  const { city, stadium, Timing, Date } = req.body;
+
+  /**
+   * Note
+   * Timings: 1 => 6-8 am
+   * Timings: 2 => 10-12 am
+   * Timings: 3 => 2-4 pm
+   */
+
+  connection.query(
+    `INSERT INTO Booking(userId,groundId,city,stadium,Date,Timing) values(${req.user.id},1,'${city}','${stadium}','${Date}', '${Timing}')`,
+    async (err, result, fields) => {
+      if (err) throw err;
+      else {
+        res.redirect("/user");
+      }
+    }
+  );
 });
 
 module.exports = router;

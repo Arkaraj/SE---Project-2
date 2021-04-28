@@ -13,6 +13,7 @@ app.use(cookieParser());
 const auth = require("./routes/auth");
 
 app.use("/", express.static(path.join(__dirname, "views/")));
+app.use("/user", express.static(path.join(__dirname, "views/")));
 //Setting view engine for ejs
 app.set("view engine", "ejs");
 

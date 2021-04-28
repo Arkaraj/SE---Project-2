@@ -57,10 +57,20 @@ router.post("/login", async (req, res) => {
               language: "en",
               country: "in",
             });
-            res.render("userdashboard", {
-              result: results[0],
-              news: news.articles.slice(0, 8),
-            });
+            connection.query(
+              `SELECT * FROM Booking,User where Booking.userId = User.id`,
+              async (err, result, fields) => {
+                if (err) throw err;
+                else {
+                  const booking = result;
+                  res.render("userdashboard", {
+                    result: results[0],
+                    news: news.articles.slice(0, 8),
+                    booking,
+                  });
+                }
+              }
+            );
             //res.json({ auth: true, token: token, result: results });
           } else {
             // Needs to be better
