@@ -42,7 +42,7 @@
           <div class="col-lg-7 px-5 pt-3">
             <h1 class="py-3 pb-5 h1-logo">SportsHub</h1>
             <h4 class="h4-logo">Admin Login</h4>
-            <form action="admin.html">
+            <form action="/adminlogin" method="POST">
               <div class="form-row">
                 <div class="col-lg-7">
                   <input
@@ -50,6 +50,7 @@
                     name="email"
                     placeholder="Email address"
                     class="form-control my-3 p-4"
+                    required
                   />
                 </div>
               </div>
@@ -60,6 +61,7 @@
                     name="password"
                     placeholder="Enter Password"
                     class="form-control my-3 p-4"
+                    required
                   />
                 </div>
               </div>
@@ -68,6 +70,9 @@
                   <button type="btn" class="btn1 mt-3 mb-5">Login</button>
                 </div>
               </div>
+              <% if (msg.msg) { %>
+              <div class="alert alert-danger" role="alert"><%= msg.msg %></div>
+              <% } %>
             </form>
           </div>
         </div>

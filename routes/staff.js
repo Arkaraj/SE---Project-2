@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
     else {
       const realResult = result
         .map((res) => {
-          // Old Stadium
+          // Old Stadium are removed
           if (date.getTime() < res.Date.getTime()) {
             return res;
           } else {

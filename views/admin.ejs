@@ -90,7 +90,11 @@
 						</button>
 					  </div>
 					</div>
-					<!-- <p class="h4-logo">Don't have an account? <a href="">Register Here!</a></p> -->
+					<% if (!msg.flag) { %>
+						<div class="alert alert-danger" role="alert"><%= msg.msg %></div>
+						<% } else { %> <% if(msg.msg) {%>
+						<div class="alert alert-success" role="alert"><%= msg.msg %></div>
+						<% } %> <% } %>
 				  </form>
 				</div>
 			  </div>

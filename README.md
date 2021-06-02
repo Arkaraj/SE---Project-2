@@ -10,9 +10,11 @@ touch .env
 
 .env file contents:
 
-HOST
-USER_DB
-PASSWORD
-DB_NAME
-SECRET
-NEWS_API
+```.env
+HOST=
+USER_DB=
+PASSWORD=
+DB_NAME=
+SECRET=
+NEWS_API=
+```

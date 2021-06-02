@@ -17,9 +17,21 @@ passport.use(
       secretOrKey: `${process.env.SECRET}`,
     },
     (payload, done) => {
-      if (payload.sub.role) {
+      if (payload.sub.role === 1) {
         connection.query(
           `SELECT * FROM Staff WHERE Sid = '${payload.sub.id}'`,
+          (err, result, fields) => {
+            if (err) {
+              return done(err, false);
+            }
+            if (result.length > 0) {
+              return done(null, result[0]);
+            } else done(null, false);
+          }
+        );
+      } else if (payload.sub.role === 2) {
+        connection.query(
+          `SELECT * FROM Admin WHERE id = '${payload.sub.id}'`,
           (err, result, fields) => {
             if (err) {
               return done(err, false);
