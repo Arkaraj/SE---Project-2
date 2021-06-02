@@ -68,6 +68,9 @@
                   <button type="btn" class="btn1 mt-3 mb-5">Login</button>
                 </div>
               </div>
+              <% if (msg.msg) { %>
+              <div class="alert alert-danger" role="alert"><%= msg.msg %></div>
+              <% } %>
             </form>
           </div>
         </div>

@@ -17,8 +17,10 @@ router.get("/", async (req, res) => {
 
   let booking = [];
 
+  // SELECT * FROM Booking,User INNER JOIN User on Booking.userId = User.id
+
   connection.query(
-    `SELECT * FROM Booking,User where Booking.userId = User.id`,
+    `SELECT * FROM Booking where Booking.userId = ${req.user.id}`,
     async (err, result, fields) => {
       if (err) throw err;
       else {

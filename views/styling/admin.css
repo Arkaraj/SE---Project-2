@@ -1,0 +1,285 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #031321;
+  }
+  
+  .container-fluid {
+    padding: 7%;
+  }
+  
+  /* Navigation Bar */
+  
+  .navbar {
+    margin-bottom: 100px;
+  }
+  
+  .navbar-brand {
+    font-family: "Cinzel", serif;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin: 2%;
+  }
+  
+  .nav-link {
+    font-family: "Ubuntu", sans-serif;
+  }
+  .long-link {
+    width: 167px;
+    margin: 0;
+  }
+  
+  .nav-link:hover {
+    color: black !important;
+    background-color: white;
+    transition: 1s;
+  }
+  
+  /* slideshow */
+  
+  #slideshow {
+    margin-top: 100px;
+    background: white;
+    margin-bottom: 100px;
+  }
+  
+  .h1-slideshow {
+    text-align: center;
+    color: #031321;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .slideshow-imgs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+  }
+  
+  .p-slideshow {
+    text-align: center;
+    color: #031321;
+    font-size: 1.5rem;
+    padding-top: 10px;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .slideshow-btns {
+    background-color: #031321;
+    margin-bottom: 100px;
+  }
+  
+  /* contact */
+  
+  #contact {
+    background-color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .contact-div {
+    padding: 7% 15%;
+    padding-bottom: 3%;
+    font-size: 1.5rem;
+  }
+  
+  .cunt2 {
+    color: #111;
+    padding: 3%;
+  }
+  
+  .p-contact {
+    padding: 5%;
+    padding-top: 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-family: "Ubuntu", serif;
+    text-transform: uppercase;
+  }
+  /* Instructions */
+  #instructions {
+    background-color: white;
+    margin: 0;
+    text-align: center;
+  }
+  .ul-instructions {
+    padding: 0;
+  }
+  .li-instructions {
+    line-height: 4rem;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    display: block;
+  }
+  .li-instructions:hover {
+    background-color: #031321;
+    color: white;
+    transition: 0.25s;
+  }
+  .h1-instructions {
+    text-transform: uppercase;
+    padding: 50px 0px;
+    word-spacing: 1rem;
+    font-family: "Cinzel";
+    font-weight: bold;
+  }
+  .motherfucker {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+  }
+  /* News */
+  .news {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1.2rem;
+  }
+  
+  /* Tables */
+  #tables {
+    background: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+	background-color: #031321;
+	margin: 0;
+	padding: 0;
+}
+
+.row {
+	background-color: white;
+	border-radius: 30px;
+	box-shadow: 12px 12px 22px;
+}
+
+img {
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.btn1 {
+	border: none;
+	outline: none;
+	height: 50px;
+	width: 100%;
+	background-color: #031321;
+	color: white;
+	border-radius: 4px;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.btn1:hover {
+	background-color: white;
+	color: #031321;
+	border: 1px solid;
+	transition: 0.25s;
+}
+
+.h1-logo {
+	font-family: 'Cinzel', serif;
+	font-size: 3.5rem;
+}
+
+.container {
+	margin-bottom: 0;
+	padding-bottom: 0;
+    /* text-align: center; */
+}
+
+.h4-logo {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.form-control {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.row{
+    align-items: center;
+    text-align: center;
+}
+
+.works{
+    margin: 0 auto;
+}
+body {
+	background-color: #031321;
+	margin: 0;
+	padding: 0;
+}
+
+.row {
+	background-color: white;
+	border-radius: 30px;
+	box-shadow: 12px 12px 22px;
+}
+
+img {
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.btn1 {
+	border: none;
+	outline: none;
+	height: 50px;
+	width: 100%;
+	background-color: #031321;
+	color: white;
+	border-radius: 4px;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.btn1:hover {
+	background-color: white;
+	color: #031321;
+	border: 1px solid;
+	transition: 0.25s;
+}
+
+.h1-logo {
+	font-family: 'Cinzel', serif;
+	font-size: 3.5rem;
+}
+
+.container {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.h4-logo {
+	font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.custom-select{
+	font-family: 'Montserrat', sans-serif;
+}
+.labels-form{
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.date-lol{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hehe{
+    margin-bottom: 30px;
+}
+
+.edits{
+    text-align: center;
+    color: white;
+}

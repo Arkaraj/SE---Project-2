@@ -15,13 +15,28 @@ router.get("/", async (req, res) => {
     country: "in",
   });
 
+  const date = new Date();
+
   connection.query(`SELECT * FROM Booking`, async (err, result, fields) => {
     if (err) throw err;
     else {
+      const realResult = result
+        .map((res) => {
+          // Old Stadium
+          if (date.getTime() < res.Date.getTime()) {
+            return res;
+          } else {
+            return null;
+          }
+        })
+        .filter((e) => {
+          return e;
+        });
+
       res.render("staffdashboard", {
         result: req.user,
         news: news.articles.slice(0, 8),
-        booking: result,
+        booking: realResult,
       });
     }
   });

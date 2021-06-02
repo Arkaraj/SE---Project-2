@@ -36,7 +36,7 @@
 					</ul>
 				</div>
 			</nav>
-			<h3 class="motherfucker">Welcome Admin, <%= result.firstName %> </h3>
+			<h3 class="motherfucker">Welcome Staff, <%= result.firstName %> </h3>
 			<h2 class="motherfucker">News:</h2>
 			<div class="news">
 				<% news.forEach(article => { %>
@@ -66,7 +66,7 @@
 		</ul>
 	</section>
 	<section id="tables">
-		<h2>Bookings:</h2>
+		<h2>All Bookings:</h2>
 		<table class="table table-striped">
 			<thead>
 			  <tr>
@@ -75,7 +75,7 @@
 				<th scope="col">City</th>
 				<th scope="col">TimeSlot</th>
 				<th scope="col">Timings</th>
-				<th scope="col">Delete</th>
+				<!-- <th scope="col">Delete</th> -->
 			  </tr>
 			</thead>
 			<tbody>
@@ -94,9 +94,9 @@
 				2-4 pm
 				<% } %> 
 			  </td>
-			  <td>
-				<form action="/staff/<%= info.Bid %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form> 
-			</td>
+			  <!-- <td>
+				<form action="/staff/info.Bid?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form> 
+			</td> -->
 			<% }) %>
 				  </tr>
 			</tbody>

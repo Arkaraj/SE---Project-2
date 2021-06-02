@@ -16,14 +16,14 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./styling/login.css" />
+    <link rel="stylesheet" type="text/css" href="./styling/adminlogin.css" />
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lobster&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Zilla+Slab+Highlight:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <title>User Login</title>
+    <title>Admin Login</title>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
         <div class="row no-gutters">
           <div class="col-lg-5">
             <img
-              src="./images/realmadrid.jpg"
+              src="./images/clown.jpg"
               class="img-fluid"
               alt=""
               height="600"
@@ -41,8 +41,8 @@
           </div>
           <div class="col-lg-7 px-5 pt-3">
             <h1 class="py-3 pb-5 h1-logo">SportsHub</h1>
-            <h4 class="h4-logo">User Login</h4>
-            <form action="/login" method="POST">
+            <h4 class="h4-logo">Admin Login</h4>
+            <form action="admin.html">
               <div class="form-row">
                 <div class="col-lg-7">
                   <input
@@ -65,15 +65,9 @@
               </div>
               <div class="form-row">
                 <div class="col-lg-7">
-                  <button type="submit" class="btn1 mt-3 mb-5">Login</button>
+                  <button type="btn" class="btn1 mt-3 mb-5">Login</button>
                 </div>
               </div>
-              <p class="h4-logo">
-                Don't have an account? <a href="/register">Register Here!</a>
-              </p>
-              <% if (msg.msg) { %>
-              <div class="alert alert-danger" role="alert"><%= msg.msg %></div>
-              <% } %>
             </form>
           </div>
         </div>
@@ -95,6 +89,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-
-  <script></script>
 </html>

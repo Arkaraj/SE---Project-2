@@ -25,8 +25,9 @@ const signToken = (id, role) => {
 router.get("/login", async (req, res) => {
   res.render("login", { msg: { msg: null } });
 });
+
 router.get("/stafflogin", async (req, res) => {
-  res.render("gflogin");
+  res.render("gflogin", { msg: { msg: null } });
 });
 router.get("/register", async (req, res) => {
   res.render("signup");
@@ -38,10 +39,13 @@ router.post("/login", async (req, res) => {
     connection.query(
       `SELECT * from User where email = '${email}' `,
       async function (error, results, fields) {
-        if (error) throw error;
+        if (error) {
+          throw error;
+        }
         // no error
         if (results.length == 0) {
-          return res.status(200).redirect("/");
+          const msg = "Sorry User no exists";
+          return res.status(200).render("login", { msg: { msg } });
         } else {
           let encrypt = results[0].password;
           const validate = await bcrypt.compare(password, encrypt);
@@ -57,7 +61,8 @@ router.post("/login", async (req, res) => {
             //res.json({ auth: true, token: token, result: results });
           } else {
             // Needs to be better
-            return res.status(200).redirect("/");
+            const msg = "Validation Error, Incorrect Password";
+            return res.status(200).render("login", { msg: { msg } });
           }
         }
       }
@@ -69,7 +74,7 @@ router.post("/register", async (req, res) => {
   const { firstName, lastName, phone, email, password } = req.body;
   const hash = await bcrypt.hash(password, 10);
   connection.query(
-    `INSERT INTO User(firstName,lastName,email,phone,password) values('${firstName}','${lastName}','${email}','${phone}','${hash}')`,
+    `INSERT INTO User(firstName,lastName,email,phone,password,role) values('${firstName}','${lastName}','${email}','${phone}','${hash}',0)`,
     (err, results, fields) => {
       if (err) {
         console.log("Error: " + err);
@@ -91,7 +96,8 @@ router.post("/stafflogin", async (req, res) => {
       if (error) throw error;
       // no error
       if (results.length == 0) {
-        return res.status(200).redirect("/");
+        const msg = "Incorrect Credentials";
+        return res.status(200).render("gflogin", { msg: { msg } });
       } else {
         const token = signToken(results[0].Sid, results[0].role);
         res.cookie("access_token", token, {
@@ -121,6 +127,7 @@ router.use(
   isUser,
   user
 );
+
 router.use(
   "/staff",
   passport.authenticate("jwt", { session: false }),
