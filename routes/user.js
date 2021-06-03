@@ -35,8 +35,18 @@ router.get("/", async (req, res) => {
   );
 });
 
-router.get("/booking", async (req, res) => {
-  res.render("booking");
+router.get("/booking", async (_req, res) => {
+  connection.query(
+    `SELECT * FROM Ground WHERE available = 1`,
+    async (err, ground, _f) => {
+      if (err) throw err;
+      else {
+        res.render("booking", {
+          ground,
+        });
+      }
+    }
+  );
 });
 
 router.post("/booking", async (req, res) => {

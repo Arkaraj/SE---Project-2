@@ -19,7 +19,7 @@
 	<p class="navbar-brand edits" href="">SportsHub</p>
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item">
-						<form action="/logout" method="GET"><button type="submit">logout</button></form>
+						<form action="/logout" method="GET"><button type="submit" class="btn btn-warning">logout</button></form>
 					</li>
 		</ul>
 	</div>
@@ -111,27 +111,40 @@
 		<section class="form my-4 mx-5">
 			<div class="container">
 			  <div class="row no-gutters">
-				<div class="col-lg-7 px-5 pt-3 works">
-				  <h4 class="h4-logo">Maintenance</h4>
-				  <form
-					action="/admin/maintenance"
-					method="POST"
-					class="maintenance"
-				  >
-					<div class="form-row">
-					  <div class="col-lg-12 hehe">
-						<select name="stadium" class="custom-select">
-							<option selected disabled>Select Stadium</option>
-							<% ground.forEach(g => { %>
-								<optgroup label="<%= g.location %>">
-									<option value="<%= g.Gid %>"><%= g.name %></option>
-								</optgroup>
-							<% }) %>
-						  </select>
-					  </div>
-					</div>
-				<button class="maintenancebtn">Maintenance</button>
-				</form>
+				<div class="px-0 pt-3 works">
+				<section id="tables">
+					<h2>All Grounds:</h2>
+					<table class="table table-striped">
+						<thead>
+						  <tr>
+							<th scope="col">#</th>
+							<th scope="col">Staff Id</th>
+							<th scope="col">Staff Name</th>
+							<th scope="col">Stadium Name</th>
+							<th scope="col">City</th>
+							<th scope="col">Settings</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <% ground.forEach((info,indx) => { %>
+							<tr>
+								<th scope="row"><%= indx + 1 %> </th>
+								<td><%= info.Sid %></td>
+								<td><%= info.firstName %></td>
+								<td><%= info.name %></td>
+								<td><%= info.location %></td>
+						  <td>
+							<% if (info.available) { %>
+								<form action="/admin/maintenance/<%= info.Gid %>/1?_method=PUT" method="POST"><button type="submit" class="maintenancebtn">Maintenance</button></form>
+							<% } else {%> 
+								<form action="/admin/maintenance/<%= info.Gid %>/<%= info.available %>?_method=PUT" method="POST"><button type="submit" class="maintaining">Maintaining</button></form>
+							<% } %>
+						</td>
+						<% }) %>
+							  </tr>
+						</tbody>
+					  </table>
+				</section>
 				</div>
 			  </div>
 			</div>
@@ -184,9 +197,9 @@
 $('button.btn1').click( function() {
         $('form.staff').submit();
     });
-    $('button.maintenancebtn').click( function() {
-        $('form.maintenance').submit();
-    });
+    // $('button.maintenancebtn').click( function() {
+    //     $('form.maintenance').submit();
+    // });
 
 </script>
 

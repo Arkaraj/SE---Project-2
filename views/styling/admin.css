@@ -168,7 +168,8 @@ img {
 }
 
 .btn1,
-.maintenancebtn {
+.maintenancebtn,
+.maintaining {
   border: none;
   outline: none;
   height: 50px;
@@ -177,6 +178,7 @@ img {
   color: white;
   border-radius: 4px;
   font-weight: bold;
+  border: 1px solid;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -186,6 +188,17 @@ img {
   color: #031321;
   border: 1px solid;
   transition: 0.25s;
+}
+
+.maintaining {
+  background-color: white;
+  border: 1px solid;
+  color: #031321;
+}
+
+.maintaining:hover {
+  background-color: #031321;
+  color: white;
 }
 
 .h1-logo {

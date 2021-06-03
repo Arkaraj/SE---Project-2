@@ -74,21 +74,11 @@
                   >
                   <select name="stadium" class="custom-select">
                     <option selected disabled>Select Stadium</option>
-                    <optgroup label="Delhi">
-                      <option>Rani Jhansi Stadium</option>
-                      <option>Najafgarh Stadium</option>
-                      <option>Yamuna Sports Complex</option>
+                    <% ground.forEach(g => { %>
+                    <optgroup label="<%= g.location %>">
+                      <option value="<%= g.name %>"><%= g.name %></option>
                     </optgroup>
-                    <optgroup label="Chennai">
-                      <option>Shuttle Sporting Indoor Stadium</option>
-                      <option>Jayalalitha Indoor Basketball Stadium</option>
-                      <option>Mayor Radhakrishnan Hockey Stadium</option>
-                    </optgroup>
-                    <optgroup label="Vellore">
-                      <option>Netaji Stadium</option>
-                      <option>Oval Ground CMC</option>
-                      <option>The Turf Nation</option>
-                    </optgroup>
+                    <% }) %>
                   </select>
                 </div>
               </div>
