@@ -17,7 +17,17 @@
 <body>
 	<div class="edits">
 	<p class="navbar-brand edits" href="">SportsHub</p>
+	<ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+						<form action="/logout" method="GET"><button type="submit">logout</button></form>
+					</li>
+		</ul>
 	</div>
+	<% if (!msg.flag) { %>
+		<div class="alert alert-danger" role="alert"><%= msg.msg %></div>
+		<% } else { %> <% if(msg.msg) {%>
+		<div class="alert alert-success" role="alert"><%= msg.msg %></div>
+		<% } %> <% } %>
 	<section id="staff">
 		<section class="form my-4 mx-5">
 			<div class="container">
@@ -25,8 +35,9 @@
 				<div class="col-lg-7 px-5 pt-3 works">
 				  <h4 class="h4-logo">Ground Staff Add</h4>
 				  <form
-					action="/register"
+					action="/admin/staff"
 					method="POST"
+					class="staff"
 				  >
 					<div class="form-row">
 					  <div class="col-lg-12">
@@ -90,11 +101,6 @@
 						</button>
 					  </div>
 					</div>
-					<% if (!msg.flag) { %>
-						<div class="alert alert-danger" role="alert"><%= msg.msg %></div>
-						<% } else { %> <% if(msg.msg) {%>
-						<div class="alert alert-success" role="alert"><%= msg.msg %></div>
-						<% } %> <% } %>
 				  </form>
 				</div>
 			  </div>
@@ -108,40 +114,80 @@
 				<div class="col-lg-7 px-5 pt-3 works">
 				  <h4 class="h4-logo">Maintenance</h4>
 				  <form
-					action="/register"
+					action="/admin/maintenance"
 					method="POST"
+					class="maintenance"
 				  >
 					<div class="form-row">
 					  <div class="col-lg-12 hehe">
 						<select name="stadium" class="custom-select">
 							<option selected disabled>Select Stadium</option>
-							<optgroup label="Delhi">
-							  <option>Rani Jhansi Stadium</option>
-							  <option>Najafgarh Stadium</option>
-							  <option>Yamuna Sports Complex</option>
-							</optgroup>
-							<optgroup label="Chennai">
-							  <option>Shuttle Sporting Indoor Stadium</option>
-							  <option>Jayalalitha Indoor Basketball Stadium</option>
-							  <option>Mayor Radhakrishnan Hockey Stadium</option>
-							</optgroup>
-							<optgroup label="Vellore">
-							  <option>Netaji Stadium</option>
-							  <option>Oval Ground CMC</option>
-							  <option>The Turf Nation</option>
-							</optgroup>
+							<% ground.forEach(g => { %>
+								<optgroup label="<%= g.location %>">
+									<option value="<%= g.Gid %>"><%= g.name %></option>
+								</optgroup>
+							<% }) %>
 						  </select>
 					  </div>
 					</div>
-				  </form>
+				<button class="maintenancebtn">Maintenance</button>
+				</form>
 				</div>
 			  </div>
 			</div>
 		  </section>
+		  <section id="tables">
+			<h2>All Bookings:</h2>
+			<table class="table table-striped">
+				<thead>
+				  <tr>
+					<th scope="col">#</th>
+					<th scope="col">Stadium</th>
+					<th scope="col">City</th>
+					<th scope="col">TimeSlot</th>
+					<th scope="col">Timings</th>
+					<th scope="col">Delete</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <% booking.forEach((info,indx) => { %>
+					<tr>
+						<th scope="row"><%= indx + 1 %> </th>
+						<td><%= info.stadium %></td>
+						<td><%= info.city %></td>
+						<td><%= info.Date.toDateString() %> </td>
+						<td>
+							<% if (info.Timing == 1) { %>
+							6-8 am
+					<% } else if (info.Timing == 2) { %>
+						10-12 am
+				  <% } else { %>
+					2-4 pm
+					<% } %> 
+				  </td>
+				  <td>
+					<form action="/admin/booking/<%= info.Bid %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form> 
+				</td>
+				<% }) %>
+					  </tr>
+				</tbody>
+			  </table>
+		</section>
 	</section>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
+<script>
+
+$('button.btn1').click( function() {
+        $('form.staff').submit();
+    });
+    $('button.maintenancebtn').click( function() {
+        $('form.maintenance').submit();
+    });
+
+</script>
 
 </html>
